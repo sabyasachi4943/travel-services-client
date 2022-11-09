@@ -15,11 +15,9 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name, photoURL, email, password);
+ 
 
     createUser(email, password)
       .then((result) => {
