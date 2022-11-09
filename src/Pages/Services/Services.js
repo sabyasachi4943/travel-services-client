@@ -15,7 +15,11 @@ const Services = () => {
     <div>
       <h2>All services : {services.length}</h2>
       {services.map((service) => (
-        <Service key={service._id} service={service}></Service>
+        <Service
+          key={service._id}
+          service={service}
+          // handleAddService={handleAddService}
+        ></Service>
       ))}
     </div>
   );
