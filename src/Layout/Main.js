@@ -9,7 +9,6 @@ import Header from "../Pages/Shared/Header/Header";
 const Main = () => {
   return (
     <div>
-      <h3>main layout</h3>
       <Header></Header>
       <Banner></Banner>
       <Container>
