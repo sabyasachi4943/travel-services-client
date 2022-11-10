@@ -26,28 +26,29 @@ const Reviews = ({ service }) => {
       name,
       email,
       text,
-      createdAt: d.toString()
+      createdAt: d.toString(),
     };
 
     fetch("http://localhost:5000/reviews", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(review)
+      body: JSON.stringify(review),
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         if (data.acknowledged) {
-          alert("review submitted successfully")
+          alert("review submitted successfully");
           form.reset();
         }
       })
-      .catch(er => console.error(er));
+      .catch((er) => console.error(er));
   };
   return (
-    <div>
+    <div className="align-items-center text-center justify-content-center p-5 m-5  border border-dark rounded">
+      <h3>Add your review</h3>
       <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -77,7 +78,7 @@ const Reviews = ({ service }) => {
             <Form.Control name="text" type="text" as="textarea" rows={3} />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" className="mt-2" type="submit">
             submit review
           </Button>
         </Form>

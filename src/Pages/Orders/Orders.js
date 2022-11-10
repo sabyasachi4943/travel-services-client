@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Orders = () => {
-  // const { user, logOut } = useContext(AuthContext);
+  
   const [orders, setOrders] = useState([]);
   const { user, logOut } = useContext(AuthContext);
-
+  console.log(user);
   useEffect(() => {
     fetch(`http://localhost:5000/orders?email=${user?.email}`)
       .then((res) => {

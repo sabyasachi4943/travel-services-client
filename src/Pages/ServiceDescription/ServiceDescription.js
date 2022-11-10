@@ -10,7 +10,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 const ServiceDescription = () => {
   const service = useLoaderData();
   return (
-    <div>
+    <div className="m-5">
       <Card style={{ width: "auto" }}>
         <PhotoProvider>
           <PhotoView src={service.img}>
@@ -42,15 +42,20 @@ const ServiceDescription = () => {
             ))}
           </ListGroup>
           <Button variant="outline-secondary">
-            <Link to={`/checkout/${service._id}`} className="text-decoration-none">
+            <Link
+              to={`/checkout/${service._id}`}
+              className="text-decoration-none"
+            >
               Add service
             </Link>
           </Button>
         </Card.Body>
       </Card>
-
-      <ReviewTab serviceId={service._id}></ReviewTab>
-      <Reviews service={service}></Reviews>
+      <div className="m-5">
+        
+        <ReviewTab  serviceId={service._id}></ReviewTab>
+        <Reviews  service={service}></Reviews>
+      </div>
     </div>
   );
 };

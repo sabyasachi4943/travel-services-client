@@ -13,11 +13,15 @@ const ReviewTab = ({ serviceId }) => {
 
   return (
     <div>
-      <h4>this is the review section</h4>
-      <h4>{reviews.length}</h4>
+      <h4>Service reviews</h4>
+      <h4> Total Reviews: {reviews.length}</h4>
       {reviews.map((review) => (
-        <Card key={review._id} style={{ width: "18rem" }}>
-          <Card.Body>
+        <Card
+          key={review._id}
+          style={{ width: "18rem" }}
+          className=" border-info"
+        >
+          <Card.Body className="">
             <Card.Title>{review.name}</Card.Title>
             <Card.Text>{review.text}</Card.Text>
           </Card.Body>
