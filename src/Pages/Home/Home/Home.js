@@ -1,12 +1,24 @@
 import React from "react";
-import Services from "../../Services/Services";
+import Orders from "../../Orders/Orders";
+import { Col, Container, Row } from "react-bootstrap";
 import ShortService from "../../ShortService/ShortService";
+import Testimonials from "../../Testimonials/Testimonials";
 
 const Home = () => {
   return (
-    <div>
-      <ShortService></ShortService>
+    <div className="mb-5">
+      <Container>
+        <Row>
+          <Col lg="9">
+            <ShortService></ShortService>
+          </Col>
+          <Col lg="3">
+            <Orders></Orders>
+          </Col>
+        </Row>
+      </Container>
       {/* <Services></Services> */}
+      <Testimonials></Testimonials>
     </div>
   );
 };
