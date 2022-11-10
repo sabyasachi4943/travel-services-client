@@ -3,10 +3,11 @@ import Orders from "../../Orders/Orders";
 import { Col, Container, Row } from "react-bootstrap";
 import ShortService from "../../ShortService/ShortService";
 import Testimonials from "../../Testimonials/Testimonials";
+import ContactUs from "../../ContactUs/ContactUs";
 
 const Home = () => {
   return (
-    <div className="mb-5">
+    <div className="mb-5 align-items-center text-center justify-content-center ">
       <Container>
         <Row>
           <Col lg="9">
@@ -18,7 +19,10 @@ const Home = () => {
         </Row>
       </Container>
       {/* <Services></Services> */}
-      <Testimonials></Testimonials>
+      <div className="align-items-center text-center justify-content-center">
+        <Testimonials></Testimonials>
+        <ContactUs></ContactUs>
+      </div>
     </div>
   );
 };

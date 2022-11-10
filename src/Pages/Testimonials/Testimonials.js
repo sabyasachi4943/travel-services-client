@@ -6,6 +6,7 @@ import Image from "react-bootstrap/Image";
 const Testimonials = () => {
   return (
     <div className="d-block h-40 text-center m-5">
+      <h3>Testimonials</h3>
       <Carousel>
         <Carousel.Item>
           <Card style={{ width: "100%", height: "150px" }}>
