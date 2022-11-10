@@ -7,7 +7,7 @@ import Orders from "../Orders/Orders";
 import MyReviewsRow from "./MyReviewsRow";
 
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   console.log(user);
   const location = useLocation();
@@ -26,10 +26,20 @@ const MyReviews = () => {
   useEffect(() => {
     fetch(
       `https://travel-services-server.vercel.app/reviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("travel-token")}`,
+        },
+      },
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => setReviews(data));
-  }, [user?.email]);
+  }, [user?.email, logOut]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm(
@@ -38,6 +48,9 @@ const MyReviews = () => {
     if (proceed) {
       fetch(`https://travel-services-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("travel-token")}`,
+        }
       })
         .then((res) => res.json())
         .then((data) => {
@@ -61,6 +74,7 @@ const MyReviews = () => {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("travel-token")}`,
       },
       body: JSON.stringify({ text: `${reviewText}` }),
     })
