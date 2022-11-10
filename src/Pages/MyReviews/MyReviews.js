@@ -23,7 +23,9 @@ const MyReviews = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+    fetch(
+      `https://travel-services-server.vercel.app/reviews?email=${user?.email}`,
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.email]);
@@ -33,7 +35,7 @@ const MyReviews = () => {
       "Are you sure, you want to cancel this order",
     );
     if (proceed) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://travel-services-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -54,7 +56,7 @@ const MyReviews = () => {
     const form = event.target;
     const reviewText = form.reviewText.value;
 
-    fetch(`http://localhost:5000/reviews/${rid}`, {
+    fetch(`https://travel-services-server.vercel.app/reviews/${rid}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

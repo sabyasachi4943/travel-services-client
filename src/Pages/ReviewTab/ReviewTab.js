@@ -6,7 +6,9 @@ const ReviewTab = ({ serviceId }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/service-review?service=${serviceId}`)
+    fetch(
+      `https://travel-services-server.vercel.app/service-review?service=${serviceId}`,
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data));
   });

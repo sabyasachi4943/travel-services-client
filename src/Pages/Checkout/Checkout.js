@@ -1,53 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
 const Checkout = () => {
+  const { user } = useContext(AuthContext);
 
-    const { user } = useContext(AuthContext);
+  const { _id, service_id, title, price } = useLoaderData();
 
-    const { _id, service_id, title, price } = useLoaderData();
+  const handlePlaceOrder = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = user?.email || "unregistered";
+    const text = form.text.value;
 
-    const handlePlaceOrder = (event) => {
-      event.preventDefault();
-      const form = event.target;
-      const name = form.name.value;
-      const email = user?.email || "unregistered";
-      const text = form.text.value;
+    let d = new Date();
 
-      let d = new Date();
-
-      const order = {
-        service: _id,
-        serviceName: title,
-        price,
-        service_id,
-        name,
-        email,
-        text,
-        createdAt: d.toString(),
-      };
-
-      fetch("http://localhost:5000/orders", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(order),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.acknowledged) {
-            alert("order submitted successfully");
-            form.reset();
-          }
-        })
-        .catch((er) => console.error(er));
+    const order = {
+      service: _id,
+      serviceName: title,
+      price,
+      service_id,
+      name,
+      email,
+      text,
+      createdAt: d.toString(),
     };
+
+    fetch("https://travel-services-server.vercel.app/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          alert("order submitted successfully");
+          form.reset();
+        }
+      })
+      .catch((er) => console.error(er));
+  };
 
   return (
     <div>
