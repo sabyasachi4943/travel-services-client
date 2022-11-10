@@ -8,12 +8,14 @@ const Services = () => {
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
-      .then((data) => setServices(data));
+      .then((data) => {
+        
+        setServices(data)
+      });
   }, []);
 
   return (
-    <div>
-      <h2>All services : {services.length}</h2>
+    <div className="d-flex justify-content-center flex-wrap p-3">
       {services.map((service) => (
         <Service
           key={service._id}

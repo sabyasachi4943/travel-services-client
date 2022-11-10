@@ -33,8 +33,13 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link to='/services'>All services</Link>
-            <Link to='/blogs'>Blogs</Link>
+            <Button variant="light">
+              <Link to="/services">All services</Link>
+            </Button>
+
+            <Button variant="light">
+              <Link to="/blogs">Blogs</Link>
+            </Button>
           </Nav>
           <Nav>
             <>
@@ -47,8 +52,12 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/signup">Signup</Link>
+                  <Button variant="light">
+                    <Link to="/login">Login</Link>
+                  </Button>
+                  <Button variant="light">
+                    <Link to="/signup">Signup</Link>
+                  </Button>
                 </>
               )}
             </>
