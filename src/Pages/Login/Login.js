@@ -1,23 +1,22 @@
-import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 import { Button, ButtonGroup } from "react-bootstrap";
-import {FaGoogle} from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { login, setLoading, providerLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const googleProvider = new GoogleAuthProvider();
-  const from = location.state?.from?.pathname || '/';
-  
-  
+  const from = location.state?.from?.pathname || "/";
+
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -26,39 +25,40 @@ const Login = () => {
       })
       .catch((error) => console.error(error));
   };
-      const handleLogin = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        login(email, password)
-          .then((result) => {
-            const user = result.user;
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
 
-            const currentUser = {
-              email: user.email,
-            };
+        const currentUser = {
+          email: user.email,
+        };
 
-            console.log(currentUser);
-            form.reset();
-            setError("");
-            
-            navigate(from, { replace: true });
+        console.log(currentUser);
+        form.reset();
+        setError("");
 
-            }
-          )
-          .catch((error) => {
-            console.log(error);
-            setError(error.message);
-          })
-          .finally(() => {
-            setLoading(false);
-          });
-      };
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
-    <div>
+    <div className="m-5">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <ButtonGroup vertical>
         <Button
           onClick={handleGoogleSignIn}

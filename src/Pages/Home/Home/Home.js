@@ -4,10 +4,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import ShortService from "../../ShortService/ShortService";
 import Testimonials from "../../Testimonials/Testimonials";
 import ContactUs from "../../ContactUs/ContactUs";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <div className="mb-5 align-items-center text-center justify-content-center ">
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Container>
         <Row>
           <Col lg="9">

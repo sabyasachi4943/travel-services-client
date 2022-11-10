@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
 
@@ -42,48 +43,52 @@ const SignUp = () => {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Name</Form.Label>
-        <Form.Control name="name" type="text" placeholder="Your Name" />
-      </Form.Group>
+    <div className="m-5">
+      <Helmet>
+        <title>Signup</title>
+      </Helmet>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Your Name</Form.Label>
+          <Form.Control name="name" type="text" placeholder="Your Name" />
+        </Form.Group>
 
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          name="email"
-          type="email"
-          placeholder="Enter email"
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check
-          type="checkbox"
-          onClick={handleAccepted}
-          label={
-            <>
-              Accept <Link to="/terms">Terms and conditions</Link>
-            </>
-          }
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit" disabled={!accepted}>
-        Register
-      </Button>
-      <Form.Text className="text-danger">{error}</Form.Text>
-    </Form>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check
+            type="checkbox"
+            onClick={handleAccepted}
+            label={
+              <>
+                Accept <Link to="/terms">Terms and conditions</Link>
+              </>
+            }
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit" disabled={!accepted}>
+          Register
+        </Button>
+        <Form.Text className="text-danger">{error}</Form.Text>
+      </Form>
+    </div>
   );
 };
 

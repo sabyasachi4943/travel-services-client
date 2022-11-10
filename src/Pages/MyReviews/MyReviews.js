@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import Orders from "../Orders/Orders";
@@ -81,6 +82,9 @@ const MyReviews = () => {
 
   return (
     <div className="m-5">
+      <Helmet>
+        <title>My reviews</title>
+      </Helmet>
       <h3>my total review : {reviews.length}</h3>
       {user?.email ? (
         "you are logged in"

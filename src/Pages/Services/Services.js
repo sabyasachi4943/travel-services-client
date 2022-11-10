@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Service from "../Service/Service";
 
@@ -15,6 +16,9 @@ const Services = () => {
 
   return (
     <div className="d-flex justify-content-center flex-wrap p-3">
+      <Helmet>
+        <title>Services</title>
+      </Helmet>
       {services.map((service) => (
         <Service
           key={service._id}

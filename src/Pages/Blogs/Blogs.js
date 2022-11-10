@@ -1,9 +1,13 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import { Helmet } from "react-helmet-async";
 
 const Blogs = () => {
   return (
     <div className="m-5">
+      <Helmet>
+        <title>Blogs</title>
+      </Helmet>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>
