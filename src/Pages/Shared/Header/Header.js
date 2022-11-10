@@ -36,6 +36,18 @@ const Header = () => {
             <Button variant="light">
               <Link to="/services">All services</Link>
             </Button>
+            {user?.uid ? (
+              <>
+                <Button variant="light">
+                  <Link to="/my-reviews">All reviews</Link>
+                </Button>
+                <Button variant="light">
+                  <Link to="/services">Add services</Link>
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
 
             <Button variant="light">
               <Link to="/blogs">Blogs</Link>
