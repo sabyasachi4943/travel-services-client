@@ -39,7 +39,7 @@ const Header = () => {
             {user?.uid ? (
               <>
                 <Button variant="light">
-                  <Link to="/my-reviews">All reviews</Link>
+                  <Link to="/my-reviews">All my reviews</Link>
                 </Button>
                 <Button variant="light">
                   <Link to="/services">Add services</Link>
